@@ -22,6 +22,6 @@ public class Autor {
     private String nombre;
     @Column(name = "nacionalidad", length = 60, nullable = false)
     private String nacionalidad;
-    
+
     private localDate fechaNac;
 }
