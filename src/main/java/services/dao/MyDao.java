@@ -16,4 +16,17 @@ public class MyDao implements ICRUD {
         finally{em.close();}
         return null;
     }
+    @Override
+    public <T> void insert(T entity) {
+        EntityManager em = JPAConexion.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+        } catch (Exception ex){
+            ex.printStackTrace();
+            em.getTransaction().rollback();
+        }
+        finally{em.close();}
+    }
 }
