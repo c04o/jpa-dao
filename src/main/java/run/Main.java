@@ -1,9 +1,6 @@
 package run;
 
-import entites.Autor;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import entities.Autor;
 
 
 public class Main {
