@@ -24,6 +24,16 @@ public class Main {
         r.setNombre("Ruben Dario");
         r.setNacionalidad("Nicaraguense");
         dao.insert(r);
+
+        Autor k = new Autor();
+        k.setNombre("Franz Kafka");
+        k.setNacionalidad("Checa");
+        dao.insert(k);
+
+        Autor d = new Autor();
+        d.setNombre("Fiodor Dostoievski");
+        d.setNacionalidad("Rusa");
+        dao.insert(d);
     }
 
     public static void listarAutores() {
@@ -35,14 +45,14 @@ public class Main {
     public static void editarAutor() {
         Autor a = new Autor();
         a = dao.findById(1, Autor.class);
-        a.setNacionalidad("Colombiana");
+        a.setNacionalidad("Mexicana Actualizada");
         dao.update(a);
 
     }
 
     public static void eliminarAutor() {
         Autor a = new Autor();
-        a = dao.findById(1, Autor.class);
+        a = dao.findById(3, Autor.class);
         dao.delete(a);
     }
     public static void insertarCategoria() {
@@ -53,24 +63,32 @@ public class Main {
         Categoria r = new Categoria();
         r.setNombre("Modernismo");
         dao.insert(r);
+
+        Categoria k = new Categoria();
+        k.setNombre("Existencialismo");
+        dao.insert(k);
+
+        Categoria d = new Categoria();
+        d.setNombre("Psicológico");
+        dao.insert(d);
     }
 
     public static void listarCategoria() {
         System.out.println("Registro Almacenados:");
         List<Categoria> categorias = dao.getAll("categorias.All", Categoria.class);
-        categorias.forEach(autor -> System.out.println(autor.getNombre()));
+        categorias.forEach(categoria -> System.out.println(categoria.getNombre()));
     }
 
     public static void editarCategoria() {
         Categoria a = new Categoria();
         a = dao.findById(1, Categoria.class);
-        a.setNombre("Realismo No tan Magico");
+        a.setNombre("Realismo Mágico Actualizado");
         dao.update(a);
     }
 
     public static void eliminarCategoria() {
         Categoria a = new Categoria();
-        a = dao.findById(1, Categoria.class);
+        a = dao.findById(3, Categoria.class);
         dao.delete(a);
     }
 
@@ -88,6 +106,20 @@ public class Main {
         c.setCategoria(dao.findById(2, Categoria.class));
         c.setAñoPub(1988);
         dao.insert(c);
+
+        Libro k = new Libro();
+        k.setTitulo("El Proceso");
+        k.setAutor(dao.findById(3, Autor.class));
+        k.setCategoria(dao.findById(3, Categoria.class));
+        k.setAñoPub(1925);
+        dao.insert(k);
+
+        Libro dd = new Libro();
+        dd.setTitulo("Crimen y Castigo");
+        dd.setAutor(dao.findById(4, Autor.class));
+        dd.setCategoria(dao.findById(4, Categoria.class));
+        dd.setAñoPub(1866);
+        dao.insert(dd);
     }
 
     public static void listarLibros() {
@@ -99,13 +131,13 @@ public class Main {
     public static void editarLibro() {
         Libro l = new Libro();
         l = dao.findById(1, Libro.class);
-        l.setTitulo("Cien años de soledad");
+        l.setTitulo("100 años de soledad Actualizado");
         dao.update(l);
     }
 
     public static void eliminarLibro() {
         Libro l = new Libro();
-        l = dao.findById(1, Libro.class);
+        l = dao.findById(3, Libro.class);
         dao.delete(l);
     }
 
@@ -130,5 +162,3 @@ public class Main {
         listarLibros();
     }
 }
-
-
